@@ -5,67 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Piyush Mahajan Portfolio</title>
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8fafc;
-      color: #333;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #2c3e50;
+      line-height: 1.6;
       scroll-behavior: smooth;
     }
     header {
-      background-color: #007acc;
-      color: white;
-      padding: 1rem 2rem;
-      position: sticky;
+      position: fixed;
       top: 0;
+      width: 100%;
+      background-color: #34495e;
+      color: #ecf0f1;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 100;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      z-index: 1000;
     }
     header h1 {
       margin: 0;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
     }
     nav a {
-      margin-left: 1.5rem;
-      color: white;
+      color: #ecf0f1;
       text-decoration: none;
+      margin-left: 2rem;
       font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 1rem;
     }
-    nav a:hover {
-      color: #ffb400;
+    nav a:hover, nav a:focus {
+      color: #1abc9c;
+      outline: none;
     }
     main {
       max-width: 900px;
-      margin: 2rem auto 4rem;
-      padding: 0 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin: 100px auto 3rem;
+      padding: 0 1.5rem;
     }
     section {
-      padding: 2rem;
-      border-bottom: 1px solid #eee;
+      margin-bottom: 4rem;
+      background-color: white;
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s ease;
     }
-    section:last-child {
-      border-bottom: none;
+    section:hover {
+      box-shadow: 0 6px 26px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #007acc;
+      color: #1abc9c;
+      border-bottom: 3px solid #16a085;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      border-bottom: 3px solid #ffb400;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
+    }
+    /* About section with image */
+    #about {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    #about img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      flex-shrink: 0;
     }
     .about-text {
       font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
+      line-height: 1.8;
+      color: #34495e;
+      flex: 1;
     }
     .skills-list {
       display: flex;
@@ -73,60 +97,55 @@
       gap: 10px;
     }
     .skill-item {
-      background-color: #007acc;
+      background-color: #16a085;
       color: white;
-      padding: 0.35rem 1rem;
-      border-radius: 20px;
+      padding: 0.5rem 1.1rem;
+      border-radius: 25px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       user-select: none;
     }
-    .project-card {
-      background-color: #f6f9fc;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      transition: box-shadow 0.3s;
+    .projects-list, .experience-list, .education-list {
+      list-style: none;
+      padding-left: 0;
     }
-    .project-card:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    .project-item, .experience-item, .education-item, .resume-item {
+      margin-bottom: 1.8rem;
+      border-left: 4px solid #1abc9c;
+      padding-left: 1rem;
+      transition: border-color 0.3s ease;
     }
-    .project-title {
-      margin: 0 0 0.3rem 0;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #035a9e;
-    }
-    .project-tech {
-      font-style: italic;
-      color: #555;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .experience-item, .education-item {
-      margin-bottom: 1.5rem;
+    .project-item:hover, .experience-item:hover, .education-item:hover, .resume-item:hover {
+      border-color: #16a085;
     }
     .item-title {
       font-weight: 700;
-      font-size: 1.15rem;
-      margin-bottom: 0.2rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+      color: #2c3e50;
     }
     .item-subtitle {
       font-style: italic;
-      color: #666;
-      margin-bottom: 0.3rem;
-    }
-    .item-date {
-      font-size: 0.9rem;
-      color: #999;
+      font-weight: 600;
+      color: #7f8c8d;
       margin-bottom: 0.5rem;
     }
-    .contact-info a {
-      color: #007acc;
+    .item-description {
+      color: #34495e;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    a {
+      color: #16a085;
       text-decoration: none;
     }
-    .contact-info a:hover {
+    a:hover, a:focus {
       text-decoration: underline;
+      outline: none;
+    }
+    #contact p {
+      font-size: 1.1rem;
+      margin: 0.4rem 0;
     }
     @media (max-width: 600px) {
       header {
@@ -134,15 +153,26 @@
         align-items: flex-start;
       }
       nav {
-        margin-top: 0.5rem;
-        display: flex;
-        flex-wrap: wrap;
+        margin-top: 0.75rem;
       }
       nav a {
-        margin: 0.25rem 1rem 0.25rem 0;
+        margin-left: 0;
+        margin-right: 1rem;
+        font-size: 0.95rem;
       }
       main {
-        margin: 1rem;
+        margin: 110px 1rem 2rem;
+        padding: 0 1rem;
+      }
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      #about img {
+        margin-bottom: 1rem;
+      }
+      section {
+        padding: 1.5rem 1.75rem;
       }
     }
   </style>
@@ -156,16 +186,22 @@
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
+      <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
   <main>
     <section id="about">
-      <h2>About Me</h2>
-      <p class="about-text">A Senior System Engineer with 3+ years of experience developing system driven solutions, automation, and business intelligence to optimize performance. Expertise in SQL, Python, Java, and data visualization tools. Passionate about data, system optimization, and problem solving, with a proven track record of developing solutions that enhance system efficiency, scalability, and strategic decision making.</p>
+      <img src="images/profile.jpg" alt="Piyush Mahajan" />
+      <div>
+        <h2>About Me</h2>
+        <p class="about-text">
+          A Senior System Engineer with expertise in Machine Learning, having worked in India to develop scalable system-driven solutions. Currently pursuing advanced studies in the US focusing on Data Mining, Data Warehousing, Product Management, Cloud Computing, and Business Intelligence. This combines practical engineering skills with strategic business insights to solve complex problems efficiently.
+        </p>
+      </div>
     </section>
     <section id="skills">
-      <h2>Technical Skills</h2>
+      <h2>Technical & Domain Skills</h2>
       <div class="skills-list">
         <span class="skill-item">Java</span>
         <span class="skill-item">Python</span>
@@ -182,67 +218,90 @@
         <span class="skill-item">Machine Learning</span>
         <span class="skill-item">NLP</span>
         <span class="skill-item">Streamlit</span>
+        <span class="skill-item">Product Management</span>
+        <span class="skill-item">Project Management</span>
+        <span class="skill-item">Agile & Scrum</span>
+        <span class="skill-item">Data Analysis</span>
+        <span class="skill-item">Statistical Analysis</span>
+        <span class="skill-item">Data Visualization</span>
+        <span class="skill-item">Business Intelligence (BI)</span>
+        <span class="skill-item">Predictive Modeling</span>
+        <span class="skill-item">TensorFlow</span>
+        <span class="skill-item">Scikit-learn</span>
       </div>
     </section>
     <section id="projects">
       <h2>Projects</h2>
-      <div class="project-card">
-        <h3 class="project-title">Smart Resume Matcher / Job Recommender</h3>
-        <div class="project-tech">Python, NLP, Sentence-BERT, Streamlit, Cosine Similarity</div>
-        <p>Built an NLP-powered job recommender and resume matcher that parses resumes to recommend relevant jobs using cosine similarity between embeddings. Features a dynamic Streamlit dashboard for ranking and filtering jobs.</p>
-      </div>
-      <div class="project-card">
-        <h3 class="project-title">IBM Employee Attrition Analytics</h3>
-        <div class="project-tech">SQL, MySQL, MongoDB, Data Warehousing</div>
-        <p>Developed a data warehousing and analytics solution for analyzing employee attrition factors in IBM's HR data, enabling strategic retention efforts.</p>
-      </div>
-      <div class="project-card">
-        <h3 class="project-title">Market Research Firm Data Analysis</h3>
-        <div class="project-tech">SQL, Data Modeling, DFM</div>
-        <p>Created a Dimensional Fact Model (DFM) for advanced analytical reporting to analyze customer purchasing behavior across multiple product lines.</p>
-      </div>
+      <ul class="projects-list">
+        <li class="project-item">
+          <div class="item-title">Smart Resume Matcher / Job Recommender</div>
+          <div class="item-subtitle">Python, NLP, Sentence-BERT, Streamlit, Cosine Similarity</div>
+          <p class="item-description">Built an NLP-powered job recommender and resume matcher that parses resumes to recommend relevant jobs using cosine similarity between embeddings. Features a dynamic Streamlit dashboard for ranking and filtering jobs.</p>
+        </li>
+        <li class="project-item">
+          <div class="item-title">IBM Employee Attrition Analytics</div>
+          <div class="item-subtitle">SQL, MySQL, MongoDB, Data Warehousing</div>
+          <p class="item-description">Developed a data warehousing and analytics solution for analyzing employee attrition factors in IBM's HR data, enabling strategic retention efforts.</p>
+        </li>
+        <li class="project-item">
+          <div class="item-title">Market Research Firm Data Analysis</div>
+          <div class="item-subtitle">SQL, Data Modeling, DFM</div>
+          <p class="item-description">Created a Dimensional Fact Model (DFM) for advanced analytical reporting to analyze customer purchasing behavior across multiple product lines.</p>
+        </li>
+      </ul>
     </section>
     <section id="experience">
       <h2>Experience</h2>
-      <div class="experience-item">
-        <div class="item-title">Senior System Engineer - Infosys</div>
-        <div class="item-subtitle">Sep 2021 – Dec 2023</div>
-        <p>Led development of cloud migration solutions using GCP and AWS. Optimized ETL pipelines using SQL and Spring Boot, improving scalability of data-driven applications. Mentored junior engineers and collaborated cross-functionally to deliver business intelligence tools.</p>
-      </div>
-      <div class="experience-item">
-        <div class="item-title">Machine Learning Engineer - Smart Home Automation</div>
-        <div class="item-subtitle">Internship, Industrial IoT (Jun 2020 – Sep 2021)</div>
-        <p>Developed predictive fault detection and automation systems using ML algorithms to enhance smart appliance robustness and energy efficiency.</p>
-      </div>
-      <div class="experience-item">
-        <div class="item-title">Graduate Intern - Mansai Biomedical</div>
-        <div class="item-subtitle">IoT & Vehicle Tracking Solutions (Jun 2018 – Jun 2019)</div>
-        <p>Integrated IoT sensors for vehicle tracking and logging to improve operational logistics and fleet management efficiency.</p>
-      </div>
+      <ul class="experience-list">
+        <li class="experience-item">
+          <div class="item-title">Senior System Engineer at Infosys</div>
+          <div class="item-subtitle">Sep 2021 to Dec 2023</div>
+          <p class="item-description">Led development of cloud migration solutions using GCP and AWS, optimized ETL pipelines using SQL and Spring Boot, improved scalability of data-driven applications, mentored junior engineers, and collaborated cross-functionally to deliver business intelligence tools.</p>
+        </li>
+        <li class="experience-item">
+          <div class="item-title">Machine Learning Engineer at Industrial Control and Appliance</div>
+          <div class="item-subtitle">Jun 2020 to Sep 2021</div>
+          <p class="item-description">Developed predictive fault detection and automation systems using ML algorithms to enhance smart appliance robustness and energy efficiency.</p>
+        </li>
+        <li class="experience-item">
+          <div class="item-title">Graduate Intern at Mansai Biomedical</div>
+          <div class="item-subtitle">Jun 2018 to Jun 2019</div>
+          <p class="item-description">Integrated IoT sensors for vehicle tracking and logging to improve operational logistics and fleet management efficiency.</p>
+        </li>
+      </ul>
     </section>
     <section id="education">
       <h2>Education</h2>
-      <div class="education-item">
-        <div class="item-title">MS in Information Technology</div>
-        <div class="item-subtitle">Lindsey Wilson University (Expected Dec 2025)</div>
-      </div>
-      <div class="education-item">
-        <div class="item-title">MS in Business Analytics</div>
-        <div class="item-subtitle">University of Texas at Arlington (Completed Dec 2024)</div>
-      </div>
-      <div class="education-item">
-        <div class="item-title">Bachelor of Engineering in Computer Science</div>
-        <div class="item-subtitle">University of Pune (Completed May 2021)</div>
-      </div>
+      <ul class="education-list">
+        <li class="education-item">
+          <div class="item-title">MS in Information Technology</div>
+          <div class="item-subtitle">Lindsey Wilson University (Expected Dec 2025)</div>
+        </li>
+        <li class="education-item">
+          <div class="item-title">MS in Business Analytics</div>
+          <div class="item-subtitle">University of Texas at Arlington (Completed Dec 2024)</div>
+        </li>
+        <li class="education-item">
+          <div class="item-title">Bachelor of Engineering in Computer Science</div>
+          <div class="item-subtitle">University of Pune (Completed May 2021)</div>
+        </li>
+      </ul>
+    </section>
+    <section id="resume">
+      <h2>Resume</h2>
+      <ul>
+        <li class="resume-item"><a href="resumes/Resume___Software_Engineer___Piyush_Mahajan.pdf" target="_blank" rel="noopener noreferrer">Software Engineer Resume</a></li>
+        <li class="resume-item"><a href="resumes/Resume___ML_AI___Piyush_Mahajan.pdf" target="_blank" rel="noopener noreferrer">ML & AI Resume</a></li>
+        <li class="resume-item"><a href="resumes/Resume___Product_Manager___Piyush_Mahajan.pdf" target="_blank" rel="noopener noreferrer">Product Manager Resume</a></li>
+        <li class="resume-item"><a href="resumes/Resume___Data_Analyst___Piyush_Mahajan.pdf" target="_blank" rel="noopener noreferrer">Data Analyst Resume</a></li>
+      </ul>
     </section>
     <section id="contact">
       <h2>Contact</h2>
-      <p class="contact-info">
-        Email: <a href="mailto:pmahajan97@gmail.com">pmahajan97@gmail.com</a><br />
-        Phone: 737-328-3935<br />
-        LinkedIn: <a href="https://www.linkedin.com/in/piyushmahajan" target="_blank">linkedin.com/in/piyushmahajan</a><br />
-        GitHub: <a href="https://github.com/piyushm97" target="_blank">github.com/piyushm97</a>
-      </p>
+      <p>Email: <a href="mailto:pmahajan97@gmail.com">pmahajan97@gmail.com</a></p>
+      <p>Phone: 737-328-3935</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/piyush-mahajan-b554aa124/" target="_blank" rel="noopener noreferrer">linkedin.com/in/piyush-mahajan-b554aa124</a></p>
+      <p>GitHub: <a href="https://github.com/piyushm97" target="_blank" rel="noopener noreferrer">github.com/piyushm97</a></p>
     </section>
   </main>
 </body>
